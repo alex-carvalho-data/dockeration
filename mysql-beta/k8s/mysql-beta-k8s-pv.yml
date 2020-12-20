@@ -7,8 +7,8 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storge: 20Gi
-  accessMode:
+    storage: 20Gi
+  accessModes:
     - ReadWriteOnce
   hostPath:
     path: "/home/alex/volumes/mysql-beta-pv"
