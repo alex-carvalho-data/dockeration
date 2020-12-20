@@ -26,23 +26,23 @@ spec:
     spec:
       containers:
       - image: mysql:8
-      name: mysql-beta
-      env: # In production it must be put in Secrets
-      - name: MYSQL_DATABASE
-        value: "beta"
-      - name: MYSQL_ROOT_PASSWORD
-        value: "alex123"
-      - name: MYSQL_USER
-        value: "alex" 
-      - name: MYSQL_PASSWORD
-        value: "alex123"
-      ports:
-      - containerPort: 3306
         name: mysql-beta
-      volumeMounts:
+        env: # In production it must be put in Secrets
+        - name: MYSQL_DATABASE
+          value: "beta"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "alex123"
+        - name: MYSQL_USER
+          value: "alex" 
+        - name: MYSQL_PASSWORD
+          value: "alex123"
+        ports:
+        - containerPort: 3306
+          name: mysql-beta
+        volumeMounts:
+        - name: mysql-beta-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
       - name: mysql-beta-persistent-storage
-        mountPath: /var/lib/mysql
-    volumes:
-    - name: mysql-beta-persistent-storage
-      PersistentVolumeClaim:
-        claimName: mysql-beta-pv-claim
+        PersistentVolumeClaim:
+          claimName: mysql-beta-pv-claim
