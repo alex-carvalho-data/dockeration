@@ -19,7 +19,7 @@ metadata:
   name: mysql-beta-pv-claim
 spec:
   storageClassName: manual
-  accessMode:
+  accessModes:
     - ReadWriteOnce
   resources:
     requests:
