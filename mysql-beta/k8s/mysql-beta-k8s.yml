@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: mysql-beta
 spec:
+  type: NodePort
   ports:
   - port: 3306
+    nodePort: 30000
   selector:
     app: mysql-beta
-  clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -44,5 +45,5 @@ spec:
           mountPath: /var/lib/mysql
       volumes:
       - name: mysql-beta-persistent-storage
-        PersistentVolumeClaim:
+        persistentVolumeClaim:
           claimName: mysql-beta-pv-claim
